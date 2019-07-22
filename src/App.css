@@ -2,6 +2,22 @@
   margin: 0% 5% 0% 5%;
   text-align: center;
 }
+.overlay{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity:0;
+  transition: .5s ease;
+  background-color:
+}
+
+p {
+	color: #000;
+	:hover {
+		color: #ed1212;
+		cursor: pointer;
+	}
+}
 
 .TwirlyPig {
   transition: all 3s ease-in-out;
@@ -64,7 +80,7 @@ ul {
 
 .subtleText {
   color: #D1D1D1;
-  font-size: .75em; 
+  font-size: .75em;
 }
 
 
@@ -117,8 +133,9 @@ ul {
   height: 500px;
 }
 
-.pigTile:hover {
+.pigTile:hover .overlay {
   transform: scale(1.05);
+  opacity: 0.10
 }
 
 
@@ -133,6 +150,34 @@ ul {
   clear: both;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* .container {
+  position: relative;
+  width: 50%;
+} */
+
+/* .container:hover .overlay {
+  opacity: 1;
+} */
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
