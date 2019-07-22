@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Nav from './Nav'
+import Nav from './Nav';
 import hogs from '../porkers_data';
-import PigCard from './PigCard.js'
+import PigCard from './PigCard.js';
+import Filter from './Filter.js'
 
 class App extends Component {
   generatePigCards = () => {
@@ -10,21 +11,28 @@ class App extends Component {
 
   }
   state = {
-    hogs,
-    names: [],
+    hogs: hogs
+  }
+
+  clickedButton = event => {
+    if (event.target.className === "greased-hogs") {
+      const filteredHogs = hogs.filter(hog => hog.greased)
+      this.setState({
+        hogs: filteredHogs
+      })
+    }
   }
   sortAscending = () => {
-      const { names } = this.state;
-      names.sort((a, b) => a - b)
-      this.setState({ names })
-      console.log(names)
+      const sortByName = this.state.hogs.sort((a, b) => a.name.localeCompare(b.name))
+      this.setState({ hogs: sortByName})
     }
-debugger
+
   render() {
     return (
       <div className = "App">
           < Nav />
-          <button onClick={this.sortAscending}>Sort By Name</button>
+          < Filter clickedButton = {this.clickedButton} sortAscending= {this.sortAscending}/>
+
           <div className="ui grid container">
           {this.generatePigCards()}
 

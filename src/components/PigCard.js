@@ -38,18 +38,27 @@ export default class Index extends Component {
   		hover: false
   	 }
   }
+  // or state ={hover : false}
 
   toggleHover = () => {
     this.setState({hover: !this.state.hover})
   }
 
   render() {
+    // const medal = this.props.hog['highest medal achieved'];
+    const longJoke = 'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water'
+    const weight = this.props[longJoke]
+
     let content = null
     if (this.state.hover) {
       content = (
         <div>
           <p> Specialty: {this.props.specialty}</p>
-          <p> Greased: {this.props.greased}</p>
+          <p> Greased: {this.props.greased ?
+            <h3> Greased </h3>
+            : <h3> Not Greased.. </h3>
+          }</p>
+          <p> Weight: {this.props.weight} </p>
         </div>
       )
    } else {
